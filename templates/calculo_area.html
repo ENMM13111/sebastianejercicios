@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Área</title>
+</head>
+<body style="text-align: center;">
+    <h1>Cálculo de Área</h1>
+    <form action="/calculo_area" method="post">
+        <label for="figura">Seleccione una figura geométrica:</label>
+        <select id="figura" name="figura" required>
+            <option value="circulo">Círculo</option>
+            <option value="cuadrado">Cuadrado</option>
+            <option value="rectangulo">Rectángulo</option>
+            <option value="triangulo">Triángulo</option>
+        </select><br><br>
+
+        <div id="valores">
+            
+        </div>
+
+        <input type="submit" value="Calcular Área">
+    </form>
+    
+    {% if area is not none %}
+        <h2>Resultado:</h2>
+        <p>El área del {{ figura }} es: {{ area }} unidades cuadradas</p>
+    {% endif %}
+
+    {% if error %}
+        <h2 style="color: red;">Error: {{ error }}</h2>
+    {% endif %}
+    
+    <script>
+        document.getElementById('figura').addEventListener('change', function() {
+            const figura = this.value;
+            const valoresDiv = document.getElementById('valores');
+            valoresDiv.innerHTML = '';
+
+            if (figura === 'circulo') {
+                valoresDiv.innerHTML = '<label for="radio">Ingrese el radio:</label><input type="text" id="radio" name="radio" required>';
+            } else if (figura === 'cuadrado') {
+                valoresDiv.innerHTML = '<label for="lado">Ingrese el lado:</label><input type="text" id="lado" name="lado" required>';
+            } else if (figura === 'rectangulo') {
+                valoresDiv.innerHTML = '<label for="largo">Ingrese el largo:</label><input type="text" id="largo" name="largo" required><br><br><label for="ancho">Ingrese el ancho:</label><input type="text" id="ancho" name="ancho" required>';
+            } else if (figura === 'triangulo') {
+                valoresDiv.innerHTML = '<label for="base">Ingrese la base:</label><input type="text" id="base" name="base" required><br><br><label for="altura">Ingrese la altura:</label><input type="text" id="altura" name="altura" required>';
+            }
+        });
+    </script>
+</body>
+</html>

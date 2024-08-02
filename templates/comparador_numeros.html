@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Números</title>
+</head>
+<body style="text-align: center;">
+    <h1>Comparador de Números</h1>
+    <form action="/comparador_numeros" method="post">
+        <label for="a">Número A:</label>
+        <input type="text" id="a" name="a" required><br><br>
+        <label for="b">Número B:</label>
+        <input type="text" id="b" name="b" required><br><br>
+        <label for="c">Número C:</label>
+        <input type="text" id="c" name="c" required><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+    
+    {% if mayor is not none and menor is not none %}
+        <h2>Resultados:</h2>
+        <p>El número mayor es: {{ mayor }}</p>
+        <p>El número menor es: {{ menor }}</p>
+    {% endif %}
+
+    {% if error %}
+        <h2 style="color: red;">Error: {{ error }}</h2>
+    {% endif %}
+</body>
+</html>

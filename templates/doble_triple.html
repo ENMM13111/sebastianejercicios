@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doble y Triple del Número</title>
+</head>
+<body style="text-align: center;">
+    <h1>Doble y Triple del Número</h1>
+    <form action="/doble_triple" method="post">
+        <label for="numero">Ingrese un número:</label>
+        <input type="text" id="numero" name="numero" required><br><br>
+        <input type="submit" value="Calcular">
+    </form>
+    
+    {% if doble is not none and triple is not none %}
+        <h2>Resultados:</h2>
+        <p>El doble del número es: {{ doble }}</p>
+        <p>El triple del número es: {{ triple }}</p>
+    {% endif %}
+
+    {% if error %}
+        <h2 style="color: red;">Error: {{ error }}</h2>
+    {% endif %}
+</body>
+</html>
